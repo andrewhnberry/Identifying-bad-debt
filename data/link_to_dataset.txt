@@ -1,0 +1,3 @@
+Link To Dataset: https://www.kaggle.com/wendykan/lending-club-loan-data
+
+Dataset too big to put on github, and there really isn't a need to replicate a giant dataset elsewhere. Waste of storage. 
