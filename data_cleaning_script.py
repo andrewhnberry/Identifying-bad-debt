@@ -12,7 +12,7 @@ import pandas as pd
 # For my Part 2 - Predicitng Bad Loan notebook
 # Read data
 df = pd.read_csv('/Users/andrewberry/Downloads/lending-club-loan-data/loan.csv', low_memory=False)
-
+print('data mounted')
 # Removing columns that represent information that is not necessary or
 # information available to lender prior to lending the loan
 df = df.drop(['total_pymnt_inv','total_pymnt',
@@ -23,7 +23,7 @@ df = df.drop(['total_pymnt_inv','total_pymnt',
               'collection_recovery_fee','total_rec_prncp',
               'total_rev_hi_lim','total_rec_int']
              ,axis = 1)
-
+print('...cleaning')
 #Dropping features with 30% or more missing data
 df.dropna(thresh = 0.7*(len(df)), axis = 1, inplace = True)
 
@@ -46,16 +46,17 @@ def loan_condition(status):
         return 1 #good loan
 
 df['loan_status'] = df['loan_status'].apply(loan_condition)
-
+print('...cleaning')
 df = df.dropna(axis =0, how = 'any')
 
 # Remove further categorical data points that have too many unique values
 # Will put a strain on the model when trying to one-hot encode.
 # In addition, I don't think these categorical data points adds much values
-df_clean = df_clean.drop(['title','earliest_cr_line',
+df = df.drop(['title','earliest_cr_line',
                           'last_credit_pull_d','issue_d',
                           'zip_code','emp_title','addr_state'],
                         axis = 1)
+print('...cleaning')
 #Saving the cleaned data
 df.to_csv('/Users/andrewberry/Downloads/lending-club-loan-data/cleaned_lending_data.csv')
 #I saved outside my repository because the file is huge, and rather not waste the github storage.
