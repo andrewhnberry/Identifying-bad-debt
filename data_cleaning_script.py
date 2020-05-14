@@ -2,6 +2,9 @@
 # It's a big dataset and will require some cleaning, to make it easier for this project,
 # I will do a one stop shop cleaning here.
 
+#import time packages to measure how long this script took
+import time
+start = time.time()
 # Importing required packages
 import pandas as pd
 
@@ -56,3 +59,6 @@ df_clean = df_clean.drop(['title','earliest_cr_line',
 #Saving the cleaned data
 df.to_csv('/Users/andrewberry/Downloads/lending-club-loan-data/cleaned_lending_data.csv')
 #I saved outside my repository because the file is huge, and rather not waste the github storage.
+
+#Print how long it took to run this script in the terminal when running this
+print (time.time()- start)
